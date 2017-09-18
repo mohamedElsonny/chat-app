@@ -1,15 +1,20 @@
 {
-  "name": "node-chat-app",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.15.4"
-  }
+    "name": "node-chat-app",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node server/server.js",
+        "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha ./server/**/*.test.js",
+        "test-watch": "nodemon -x \"npm test\""
+    },
+    "engines": {
+        "node": "8.4.0"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.15.4"
+    }
 }
