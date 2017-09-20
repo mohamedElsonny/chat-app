@@ -20,11 +20,13 @@ socket.on('disconnect', function() {
 
 $('#message-form').on('submit', function(e) {
     e.preventDefault();
-
+    let input = $(this).find('[name=message]')
     socket.emit('createMessage', {
         from: 'User',
-        text: $(this).find('[name=message]').val()
+        text: input.val()
     }, function(data) {
         console.log('data', data);
     });
+
+    input.val('');
 });
