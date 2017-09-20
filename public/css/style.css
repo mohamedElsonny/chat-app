@@ -5,7 +5,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: space-between;
     width: 80%;
     background-color: #D45D79;
     color: #fff;
@@ -73,8 +73,4 @@ Button:hover {
 Button:active {
     position: relative;
     top: 1px;
-}
-
-#get-geolocation {
-    width: 20%;
 }
