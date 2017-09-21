@@ -15,7 +15,7 @@ $(document).ready(function() {
 
     socket.on('newLocationMessage', (msg) => {
         var li = $('<li></li>');
-        var a = $('<a target="_blank">get location</a>');
+        var a = $('<a target="_blank">My Current Location</a>');
 
         li.text(`${msg.from}: `);
         a.attr('href', msg.url);
@@ -36,10 +36,9 @@ $(document).ready(function() {
             from: 'User',
             text
         }, function() {
-
+            input.val('');
         });
 
-        input.val('');
     });
 
     var locationButton = $('#send-location');
@@ -49,15 +48,19 @@ $(document).ready(function() {
         if (!navigator.geolocation) {
             return alert('Geolocation is not supported by your browser');
         }
+        $(this).attr('disabled', 'disabled').text('Sending location...');
 
         navigator.geolocation.getCurrentPosition(function(position) {
+            locationButton.removeAttr('disabled').text('Send location');
             socket.emit('createLocationMessage', {
                 lng: position.coords.longitude,
                 lat: position.coords.latitude
             });
         }, function() {
+            locationButton.removeAttr('disabled').text('Send location');
             alert('Unable to fetch location');
         });
+
     });
 
 
