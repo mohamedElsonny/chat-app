@@ -140,6 +140,17 @@ button:disabled {
     -webkit-overflow-scrolling: touch;
 }
 
+.chat__messages li {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.chat__messages li span {
+    font-size: 15px;
+    color: #999
+}
+
 .chat__footer {
     background: #e6eaee;
     display: flex;

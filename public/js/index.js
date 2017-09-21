@@ -7,19 +7,28 @@ $(document).ready(function() {
     });
 
     socket.on('newMessage', function(msg) {
-
+        var formattedTime = moment(msg.createdAt).format('h:mm a');
         var li = $('<li></li>');
+        var time = $('<span class="time"></span>');
+        time.text(`${formattedTime}`);
         li.text(`${msg.from}: ${msg.text}`);
+        li.append(time);
         $('#messages').append(li);
     });
 
     socket.on('newLocationMessage', (msg) => {
+        var formattedTime = moment(msg.createdAt).format('h:mm a');
+        var time = $('<span class="time"></span>');
+        var cont = $('<div></div>');
         var li = $('<li></li>');
         var a = $('<a target="_blank">My Current Location</a>');
 
-        li.text(`${msg.from}: `);
+        cont.text(`${msg.from}: `);
         a.attr('href', msg.url);
-        li.append(a);
+        time.text(`${formattedTime}`);
+        cont.append(a);
+        li.append(cont);
+        li.append(time);
         $('#messages').append(li);
     });
 
