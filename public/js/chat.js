@@ -82,9 +82,9 @@ $(document).ready(function() {
         let input = $(this).find('[name=message]');
         let text = input.val();
         socket.emit('createMessage', {
-            from: 'User',
             text
         }, function() {
+
             input.val('');
         });
 
